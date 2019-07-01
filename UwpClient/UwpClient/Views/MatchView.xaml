@@ -1,0 +1,138 @@
+﻿<Page
+    x:Class="UwpClient.Views.MatchView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpClient.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:local1="using:UwpClient.Models.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <local1:VisibleConverter x:Key="visibleConverter"/>
+        <local1:InverseVisibleConverter x:Key="inverseVisibleConverter"/>
+    </Page.Resources>
+    
+    <Grid>
+        <SplitView
+            PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+            IsPaneOpen="{x:Bind ViewModel.IsPaneOpen, Mode=OneWay}"
+            OpenPaneLength="256"
+            CompactPaneLength="48"
+            DisplayMode="Inline" 
+            Loaded="{x:Bind ViewModel.OnInit}">
+            <SplitView.Pane>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Searchparameters" x:Name="PaneHeader" Margin="60,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <StackPanel>
+                        <ToggleSwitch x:Uid="MatchMan" 
+                            IsOn="{x:Bind ViewModel.Man, Mode=TwoWay}" 
+                            Header="Man"/>
+                        <ToggleSwitch x:Uid="MatchWoman"           
+                            IsOn="{x:Bind ViewModel.Woman, Mode=TwoWay}" 
+                            Header="Woman"/>
+                        <TextBlock                
+                        Text="Age"/>
+                        <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Margin="5 5 5 5"
+                                HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"
+                                 Text="{Binding RangeMin, ElementName=RangeSelectorControl}" />
+                            <controls:RangeSelector x:Name="RangeSelectorControl"
+                              Grid.Column="1"
+                              Minimum="18" 
+                              Maximum="99"
+                              StepFrequency="1"
+                              RangeMin="{x:Bind ViewModel.SearchParameter.MinAge, Mode=TwoWay}"
+                              RangeMax="{x:Bind ViewModel.SearchParameter.MaxAge, Mode=TwoWay}"/>
+                            <TextBlock Grid.Column="2"
+                                       Margin="5 5 5 5"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Center"
+                             Text="{Binding RangeMax, ElementName=RangeSelectorControl}" />
+                        </Grid>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock>
+                            <Run x:Uid="MatchMaxDist" Text="Max Dist: "/>
+                            <Run Text="{x:Bind ViewModel.SearchParameter.MaxDist, Mode=OneWay}"/>   
+                            </TextBlock>
+                            <Slider 
+                                StepFrequency="5.0"
+                                Minimum="0.0"
+                                Maximum="100.0"
+                                Value="{x:Bind ViewModel.SearchParameter.MaxDist, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <Button x:Uid="MatchSave" Command="{x:Bind ViewModel.SaveSettingCommand}">Save</Button>
+                        <Button x:Uid="MatchUpdatePosition" Command="{x:Bind ViewModel.LocationCommand}">Update your position</Button>
+                        <Button x:Uid="MatchClose" Click="{x:Bind ViewModel.ShowButton}">Close</Button>
+                    </StackPanel>
+                </Grid>
+            </SplitView.Pane>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Visibility="{x:Bind ViewModel.Error404, Mode=OneWay, Converter={StaticResource inverseVisibleConverter}}" 
+                    Loaded="{x:Bind ViewModel.GetNewPersone}">
+                    <FlipView
+                        Height="500"
+                        Width="500"
+                        ItemsSource="{x:Bind ViewModel.Photos.Items, Mode=OneWay}">
+                        <FlipView.ItemTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Url, Mode=OneWay}" Stretch="Uniform"></Image>
+                            </DataTemplate>
+                        </FlipView.ItemTemplate>
+                    </FlipView>
+                    <TextBlock>
+                        <Run Text="{x:Bind ViewModel.Name, Mode=OneWay}"></Run>
+                        <Run Text=" ("></Run>
+                        <Run Text="{x:Bind ViewModel.Age, Mode=OneWay}"></Run>
+                        <Run Text=")"></Run>
+                    </TextBlock>
+                    <TextBlock x:Uid="MatchSchool"
+                        Text="School"/>
+                    <TextBlock 
+                        Text="{x:Bind ViewModel.School, Mode=OneWay}"/>
+                    <TextBlock x:Uid="MatchJob"
+                        Text="Job"/>
+                    <TextBlock
+                        Text="{x:Bind ViewModel.Job, Mode=OneWay}"/>
+                    <TextBlock x:Uid="MatchDescription"
+                        Text="Description"/>
+                    <TextBlock
+                        Text="{x:Bind ViewModel.Description, Mode=OneWay}"/>
+                    <StackPanel>
+                        <Button x:Uid="MatchLike" Command="{x:Bind ViewModel.LikeCommand}">Like</Button>
+                        <Button x:Uid="MatchPass" Command="{x:Bind ViewModel.PassCommand}">Pass</Button>
+                        <Button x:Uid="MatchParameters" Click="{x:Bind ViewModel.ShowButton}">Parameters</Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Visibility="{x:Bind ViewModel.Error404, Mode=OneWay, Converter={StaticResource visibleConverter}}">
+                    <TextBlock x:Uid="MatchNoResult"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontSize="20"                          
+                           Text="No result!"/>
+                    <Button Click="{x:Bind ViewModel.ShowButton}">Parameters</Button>
+                </StackPanel>
+            </Grid>
+        </SplitView>
+
+
+    </Grid>
+</Page>

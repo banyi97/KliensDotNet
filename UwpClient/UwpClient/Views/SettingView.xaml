@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="UwpClient.Views.SettingView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpClient.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="using:UwpClient.Models.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <local1:LangConverter x:Key="langConverter"/>
+    </Page.Resources>
+    
+    <Grid>
+        <StackPanel>
+            <TextBlock x:Uid="SettingHello" Text="Settings"/>
+
+            <Button x:Uid="SettingLogout" Command="{x:Bind ViewModel.LogoutCommand}">Logout</Button>
+        </StackPanel>
+    </Grid>
+</Page>

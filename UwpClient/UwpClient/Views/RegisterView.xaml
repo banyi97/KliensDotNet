@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="UwpClient.Views.RegisterView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpClient.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="using:UwpClient.Models.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <local1:GenderConverter x:Key="genderConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock x:Uid="RegisterHello"
+                Text="Register"
+                />
+            <TextBox x:Uid="RegisterEmail"
+                Header="Email"
+                Text="{x:Bind ViewModel.Email, Mode=TwoWay}"
+                PlaceholderText="Your Email"
+                />
+            <PasswordBox x:Uid="RegisterPassword"
+                Header="Password"
+                Password="{x:Bind ViewModel.Password, Mode=TwoWay}"
+                PlaceholderText="Your Password"
+                />
+            <TextBox x:Uid="RegisterName"
+                Header="Name"
+                Text="{x:Bind ViewModel.Name, Mode=TwoWay}"
+                PlaceholderText="Your Name"
+                />
+            <DatePicker x:Uid="RegisterDatePicker"
+                Header="Your Date of Birth"
+                Date="{x:Bind ViewModel.DateOfBirth, Mode=TwoWay}"
+                MaxYear="{x:Bind ViewModel.MaxYear, Mode=OneTime}"
+                />
+            <ComboBox x:Uid="RegisterGender"
+                Header="Your Gender"
+                SelectedIndex="{x:Bind ViewModel.Gender, Mode=TwoWay, Converter={StaticResource genderConverter}}">
+                <ComboBoxItem x:Uid="RegisterMale" Content="Male"/>
+                <ComboBoxItem x:Uid="RegisterFemale" Content="Female"/>
+            </ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Uid="RegisterRegButton" Command="{x:Bind ViewModel.RegisterCommand}">Register</Button>
+                <Button x:Uid="RegisterBack" Click="{x:Bind ViewModel.GoBack}">Back</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

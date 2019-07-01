@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="UwpClient.Views.Auth"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpClient.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="using:UwpClient.Models.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <local1:LangConverter x:Key="langConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock x:Uid="AuthWelcome">Welcome</TextBlock>
+            <Button x:Uid="AuthSignIn" Click="{x:Bind ViewModel.GoToSignInPage}">Sign In</Button>
+            <Button x:Uid="AuthRegister" Click="{x:Bind ViewModel.GoToRegisterPage}">Register</Button>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Uid="AuthSignWithFacebook" Command="{x:Bind ViewModel.SignInWithFacebookCommand}">Sign in with Facebook</Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel>
+            <ComboBox 
+                SelectedIndex="{x:Bind ViewModel.SelectedLang, Mode=TwoWay, Converter={StaticResource langConverter}}">
+                <ComboBoxItem  Content="en-US"/>
+                <ComboBoxItem  Content="hu-HU"/>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+</Page>

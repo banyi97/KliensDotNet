@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="UwpClient.Views.MainPageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpClient.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <NavigationView x:Name="nvTopLevelNav"
+                Loaded="nvTopLevelNav_Loaded"
+                ItemInvoked="{x:Bind ViewModel.nvTopLevelNav_ItemInvoked}"
+                IsTabStop="False">
+            <NavigationView.MenuItems>
+                <NavigationViewItem 
+                    Icon="Contact" 
+                    Tag="Me_Page">
+                    <TextBlock x:Uid="MainPageProfile"
+                        Tag="Nav_Me">My profile
+                    </TextBlock>
+                </NavigationViewItem>
+                <NavigationViewItem 
+                    Icon="LikeDislike" 
+                    Tag="Match_Page">
+                    <TextBlock x:Uid="MainPageMatch"
+                        Tag="Nav_Match"
+                        Text="Match">
+                    </TextBlock>
+                </NavigationViewItem>
+                <NavigationViewItem 
+                    Icon="Message"
+                    Tag="Message_Page">
+                    <TextBlock x:Uid="MainPageMessage"
+                        Tag="Nav_Message">Message
+                    </TextBlock>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <Frame x:Name="contentFrame"/>
+        </NavigationView>
+    </Grid>
+</Page>

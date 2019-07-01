@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AuthRegister.Content" xml:space="preserve">
+    <value>Regisztráció</value>
+  </data>
+  <data name="AuthSignIn.Content" xml:space="preserve">
+    <value>Bejelentkezés</value>
+  </data>
+  <data name="AuthSignWithFacebook.Content" xml:space="preserve">
+    <value>Bejelentkezés Facebookkal</value>
+  </data>
+  <data name="AuthWelcome.Text" xml:space="preserve">
+    <value>Üdvözlet!</value>
+  </data>
+  <data name="MainPageMatch.Text" xml:space="preserve">
+    <value>Találatok</value>
+  </data>
+  <data name="MainPageMessage.Text" xml:space="preserve">
+    <value>Üzenetek</value>
+  </data>
+  <data name="MainPageProfile.Text" xml:space="preserve">
+    <value>Profilom</value>
+  </data>
+  <data name="MatchAge.Text" xml:space="preserve">
+    <value>Kor</value>
+  </data>
+  <data name="MatchClose.Content" xml:space="preserve">
+    <value>Bezár</value>
+  </data>
+  <data name="MatchDescription.Text" xml:space="preserve">
+    <value>Leirás</value>
+  </data>
+  <data name="MatchJob.Text" xml:space="preserve">
+    <value>Munka</value>
+  </data>
+  <data name="MatchLike.Content" xml:space="preserve">
+    <value>Tetszik</value>
+  </data>
+  <data name="MatchMan.Header" xml:space="preserve">
+    <value>Férfi</value>
+  </data>
+  <data name="MatchMaxDist.Text" xml:space="preserve">
+    <value>Max távolság:</value>
+  </data>
+  <data name="MatchNoResult.Text" xml:space="preserve">
+    <value>Nincs találat!</value>
+  </data>
+  <data name="MatchParameters.Content" xml:space="preserve">
+    <value>Parameterek</value>
+  </data>
+  <data name="MatchPass.Content" xml:space="preserve">
+    <value>Nem tetszik</value>
+  </data>
+  <data name="MatchSave.Content" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="MatchSchool.Text" xml:space="preserve">
+    <value>Iskola</value>
+  </data>
+  <data name="MatchUpdatePosition.Content" xml:space="preserve">
+    <value>Pozicióm frissitése</value>
+  </data>
+  <data name="MatchWoman.Header" xml:space="preserve">
+    <value>Nő</value>
+  </data>
+  <data name="MessageMessages.Text" xml:space="preserve">
+    <value>Üzenetek</value>
+  </data>
+  <data name="MessagePartners.Text" xml:space="preserve">
+    <value>Partnerek</value>
+  </data>
+  <data name="MessageSend.Content" xml:space="preserve">
+    <value>Küld</value>
+  </data>
+  <data name="ProfileAddPictures.Content" xml:space="preserve">
+    <value>Képek hozzáadása</value>
+  </data>
+  <data name="ProfileBackMyProfile.Content" xml:space="preserve">
+    <value>Vissza a profilomhoz</value>
+  </data>
+  <data name="ProfileDelete.Content" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="ProfileDescription.Text" xml:space="preserve">
+    <value>Leirás</value>
+  </data>
+  <data name="ProfileJob.Text" xml:space="preserve">
+    <value>Munka</value>
+  </data>
+  <data name="ProfileMyPictures.Content" xml:space="preserve">
+    <value>Képeim</value>
+  </data>
+  <data name="ProfileSave.Content" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="ProfileSchool.Text" xml:space="preserve">
+    <value>Iskola</value>
+  </data>
+  <data name="ProfileSetMain.Content" xml:space="preserve">
+    <value>Beállitásnak profil képnek</value>
+  </data>
+  <data name="ProfleMyProfile.Text" xml:space="preserve">
+    <value>Profilom</value>
+  </data>
+  <data name="RegisterBack.Content" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="RegisterDatePicker.Header" xml:space="preserve">
+    <value>Születési időd</value>
+  </data>
+  <data name="RegisterEmail.Header" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="RegisterEmail.PlaceholderText" xml:space="preserve">
+    <value>Email cimed</value>
+  </data>
+  <data name="RegisterFemale.Content" xml:space="preserve">
+    <value>Nő</value>
+  </data>
+  <data name="RegisterGender.Header" xml:space="preserve">
+    <value>Nemed</value>
+  </data>
+  <data name="RegisterHello.Text" xml:space="preserve">
+    <value>Regisztráció</value>
+  </data>
+  <data name="RegisterMale.Content" xml:space="preserve">
+    <value>Férfi</value>
+  </data>
+  <data name="RegisterName.Header" xml:space="preserve">
+    <value>Név</value>
+  </data>
+  <data name="RegisterName.PlaceholderText" xml:space="preserve">
+    <value>Neved</value>
+  </data>
+  <data name="RegisterPassword.Header" xml:space="preserve">
+    <value>Jelszó</value>
+  </data>
+  <data name="RegisterPassword.PlaceholderText" xml:space="preserve">
+    <value>Jelszavad</value>
+  </data>
+  <data name="RegisterRegButton.Content" xml:space="preserve">
+    <value>Regisztráció</value>
+  </data>
+  <data name="SettingHello.Text" xml:space="preserve">
+    <value>Beállitások</value>
+  </data>
+  <data name="SettingLogout.Content" xml:space="preserve">
+    <value>Kijelentkezés</value>
+  </data>
+  <data name="SignInBack.Content" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="SignInEmail.Header" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="SignInEmail.PlaceholderText" xml:space="preserve">
+    <value>Email cimed</value>
+  </data>
+  <data name="SignInHello.Text" xml:space="preserve">
+    <value>Bejelentkezés</value>
+  </data>
+  <data name="SignInPassword.Header" xml:space="preserve">
+    <value>Jelszó</value>
+  </data>
+  <data name="SignInPassword.PlaceholderText" xml:space="preserve">
+    <value>Jelszavad</value>
+  </data>
+  <data name="SignInSignButton.Content" xml:space="preserve">
+    <value>Bejelentkezés</value>
+  </data>
+</root>

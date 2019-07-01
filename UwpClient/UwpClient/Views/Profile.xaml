@@ -1,0 +1,155 @@
+﻿<Page
+    x:Class="UwpClient.Views.Profile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpClient.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="using:UwpClient.Models.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+    <local1:VisibleConverter x:Key="visibleConverter"/>
+    <local1:InverseVisibleConverter x:Key="inverseVisibleConverter"/>
+    <local1:MainPhotoConverter x:Key="mainPhotoConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel
+            Visibility="{x:Bind ViewModel.Pictures, Mode=OneWay, Converter={StaticResource inverseVisibleConverter}}"
+            Loaded="{x:Bind ViewModel.OnInit}">
+            <TextBlock x:Uid="ProfleMyProfile"
+                Text="My Profile"
+                />
+            <StackPanel Orientation="Horizontal">
+                <PersonPicture ProfilePicture="{x:Bind ViewModel.MainImage.Url, Mode=OneWay}"/>
+                <TextBlock>
+                    <Run Text="{x:Bind ViewModel.Name, Mode=OneWay}"></Run>
+                    <Run Text=" ("></Run>
+                    <Run Text="{x:Bind ViewModel.Age, Mode=OneWay}"></Run>
+                    <Run Text=")"></Run>
+                </TextBlock>
+            </StackPanel>
+            <TextBox x:Uid="ProfileSchool"
+                Header="School"
+                Text="{x:Bind ViewModel.School, Mode=TwoWay}"
+                />
+            <TextBox x:Uid="ProfileJob"
+                Header="Job"
+                Text="{x:Bind ViewModel.Job, Mode=TwoWay}"
+                />
+            <TextBox x:Uid="ProfileDescription"
+                Header="Description"
+                Text="{x:Bind ViewModel.Description, Mode=TwoWay}"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                />
+            <StackPanel>
+                <Button x:Uid="ProfileSave" Command="{x:Bind ViewModel.SaveCommand}">Save</Button>
+                <Button x:Uid="ProfileMyPictures" Click="{x:Bind ViewModel.ShowPictures}">My pictures</Button>
+            </StackPanel>
+        </StackPanel>
+
+        <SplitView
+            Visibility="{x:Bind ViewModel.Pictures, Mode=OneWay, Converter={StaticResource visibleConverter}}"
+            PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" 
+            IsPaneOpen="True" 
+            OpenPaneLength="256" 
+            CompactPaneLength="48"
+            DisplayMode="Inline">
+            <SplitView.Pane>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="My pictures" Margin="60,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <ListView
+                        Margin="0,12,0,0" 
+                        SelectionMode="None" 
+                        Grid.Row="1" 
+                        VerticalAlignment="Stretch"
+                        ItemClick="{x:Bind ViewModel.ItemClick}" 
+                        IsItemClickEnabled="True"
+                        ItemsSource="{x:Bind ViewModel.Photos.Items, Mode=OneWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Image 
+                                    Height="Auto" 
+                                    Width="Auto" 
+                                    Source="{Binding Url, Mode=OneWay}" Stretch="Uniform"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <StackPanel Grid.Row="2" Margin="14,24,0,24" >
+                        <Button x:Uid="ProfileBackMyProfile" Click="{x:Bind ViewModel.ShowPictures}">Back my profile</Button>
+                        <Button x:Uid="ProfileAddPictures" Click="{x:Bind ViewModel.AddPhotos}">Add pictures</Button>
+                    </StackPanel>
+                </Grid>
+            </SplitView.Pane>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Selected picture" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
+                <Image Grid.Row="1"
+                        Height="Auto" MaxHeight="650"
+                        Width="Auto" MaxWidth="650"
+                        Source="{x:Bind ViewModel.SelectedImage.Url,Mode=OneWay}"/>
+                <StackPanel Grid.Row="2">
+                    <Button x:Uid="ProfileSetMain" Command="{x:Bind ViewModel.SetMainCommand}">Set main image</Button>
+                    <Button x:Uid="ProfileDelete" Command="{x:Bind ViewModel.DeleteCommand}">Delete</Button>
+                </StackPanel>
+            </Grid>
+        </SplitView>
+
+
+        <!--<StackPanel Visibility="{x:Bind ViewModel.Pictures, Mode=OneWay, Converter={StaticResource visibleConverter}}">
+            <SplitView
+                PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+                IsPaneOpen="True"
+                OpenPaneLength="256"
+                DisplayMode="Inline" >
+                <SplitView.Pane>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <ListView ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                  ScrollViewer.VerticalScrollMode="Enabled"
+                            Grid.Row="0"
+                            ItemClick="{x:Bind ViewModel.ItemClick}"
+                            IsItemClickEnabled="True"
+                            ItemsSource="{x:Bind ViewModel.Photos.Items, Mode=OneWay}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Image 
+                                    Height="Auto" 
+                                    Width="Auto" 
+                                    Source="{Binding Url, Mode=OneWay}" Stretch="Uniform"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </SplitView.Pane>
+                <SplitView.Content>
+                    <StackPanel>
+                        <Image
+                        Height="500"
+                        Width="500"
+                        Source="{x:Bind ViewModel.SelectedImage.Url,Mode=OneWay}"/>
+                        <Button>Set main image</Button>
+                        <Button>Delete</Button>
+                    </StackPanel>
+                </SplitView.Content>
+            </SplitView>
+            <Button Click="{x:Bind ViewModel.ShowPictures}">Back my profile</Button>
+            <Button Click="{x:Bind ViewModel.AddPhotos}">Add pictures</Button>
+        </StackPanel>-->
+    </Grid>
+</Page>
